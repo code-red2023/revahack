@@ -13,27 +13,19 @@ public class Home_page extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_page);}}
-/*
-        FloatingActionButton floatingTextButton = findViewById(R.id.AddField);
+        setContentView(R.layout.activity_home_page);
 
-        floatingTextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), AddNewField.class);
-                startActivity(i);
-            }
-        });
+
 
         fieldTabCardView = findViewById(R.id.FiedTab_1);
 
         fieldTabCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomePage.this, DashboardPage.class);
+                Intent intent = new Intent(Home_page.this, Dashboard_page.class);
                 startActivity(intent);
             }
         });
     }
-}*/
+}
 

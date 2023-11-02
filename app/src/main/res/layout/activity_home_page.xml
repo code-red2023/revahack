@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/Background_color"
-    tools:context="Home_page">
+    >
 
     <TextView
         android:id="@+id/Field_Heading"
@@ -84,19 +84,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/AddField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="52dp"
-        android:layout_marginBottom="84dp"
-        android:background="@color/Button_color"
-        android:clickable="true"
-        android:contentDescription="NULL"
-        app:backgroundTint="@color/Button_color"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/add_clipart" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
