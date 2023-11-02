@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/sign_up_"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FAF8EC"
+        android:clipToOutline="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/sign_up"
+            android:layout_width="255dp"
+            android:layout_height="48dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="51dp"
+            android:layout_marginTop="43dp"
+            android:gravity="center_horizontal|top"
+            android:text="Sign up"
+            android:textAppearance="sign up"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/Name_edtText"
+            android:layout_width="280dp"
+            android:layout_height="80dp"
+            android:layout_below="@+id/sign_up"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="44dp"
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="text"
+            android:textSize="24sp"
+            />
+
+        <EditText
+            android:id="@+id/PhoneNum_edtText"
+            android:layout_width="280dp"
+            android:layout_height="80dp"
+            android:layout_below="@+id/Name_edtText"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="48dp"
+            android:digits="1234567890"
+            android:ems="10"
+            android:hint="Phone Number"
+            android:numeric="integer"
+            android:textSize="24sp"
+            />
+
+        <EditText
+            android:id="@+id/Password_edtText"
+            android:layout_width="280dp"
+            android:layout_height="80dp"
+            android:layout_below="@+id/PhoneNum_edtText"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="48dp"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="text"
+            android:password="true"
+            android:textSize="24sp"
+            />
+
+        <Button
+            android:id="@+id/SignUp_Button"
+            android:layout_width="360dp"
+            android:layout_height="80dp"
+            android:layout_below="@+id/textView"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="24dp"
+            android:background="#F9B672"
+            android:text="Sign up"
+            android:textColor="#000000"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Password_edtText"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="56dp"
+            android:layout_marginEnd="54dp"
+            android:text="by clicking this I accept terms and condition"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/SignUp_Button"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="79dp"
+            android:layout_marginTop="40dp"
+            android:text="Already have an Account ? "
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/SignUp_Button"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="120dp"
+            android:text="Login"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+    <!-- Auto layout, variables, and unit scale are not yet supported -->
+
+    <!-- drawable/rectangle_1.xml -->
+
+    <!--
+      Font family: Inria Serif
+      Line height: 48sp
+      -->
+
+    <!-- styles.xml -->
+
+
+    <!-- strings.xml -->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
