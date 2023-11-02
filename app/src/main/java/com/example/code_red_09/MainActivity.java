@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (hasSignedUp) {
             // The user has signed up, navigate to the homepage or another activity
-            Intent i = new Intent(getApplicationContext(), HomePage.class);
+            Intent i = new Intent(getApplicationContext(), Home_page.class);
             startActivity(i);
             finish(); // Finish the current activity to prevent going back to it
         } else {
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                         editor.apply();
 
                         // Navigate to the homepage or another activity
-                        Intent i = new Intent(getApplicationContext(), HomePage.class);
+                        Intent i = new Intent(getApplicationContext(), Home_page.class);
                         startActivity(i);
                         finish(); // Finish the current activity
                     } else {
