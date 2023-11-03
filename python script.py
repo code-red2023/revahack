@@ -35,13 +35,15 @@ try:
     value_list =list( data.split(","))
     print(data)
     print(data[5])
+    soil_moisture = int(data[6])
+    value_list.pop(6)
     #query = "INSERT INTO DATA (TimeStamp, temp, hum, weather_description, rain_fall, rain_predict, water_to_drip, irrigation) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
     
-    rain_prediction = int(data[5])
-    rainfall = int(data[4])
-    rainfall_time = float(data[0])
-    temperature = float(data[1])
-    humidity = int(data[2])
+    rain_prediction = float(value_list[5])
+    rainfall = float(value_list[4])
+    rainfall_time = float(value_list[0])
+    temperature = float(value_list[1])
+    humidity = float(value_list[2])
     current_time = time.time()
     print(rain_prediction)
     print(rainfall)
@@ -91,8 +93,7 @@ try:
     
 
     # Insert the data into the database
-    value_list.append("10")
-    value_list.append("yes")
+    
     
     
     query = "INSERT INTO DATA (TimeStamp, temp, hum, weather_description, rain_fall, rain_predict, water_to_drip, irrigation) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
