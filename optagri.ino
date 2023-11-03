@@ -8,20 +8,27 @@
 #include <ArduinoJson.h>
 #include <Arduino_JSON.h> 
 int _moisture,sensor_analog;
+int relayPin = 4;
+
 const int sensor_pin = A0;
 const char* ssid = "linkesh";
 const char* password = "20042004";
 String outputdata ;
+int wait;
 
 DHT dht(DHTPIN, DHTTYPE);
 String URL = "https://pro.openweathermap.org/data/2.5/forecast/hourly?";
 String ApiKey = "e4d7c8e138b5339578a5241efff65332";
 String lat = "10.75547984242798";
 String lon = "78.65237086014207";
-
+float water_threshold = 4  ;
+float soil_moisture_threshold = 80; 
+float temperature_threshold = 24  ;
+float humidity_threshold = 60  ;
 void setup() {
   Serial.begin(115200);
   dht.begin();
+  pinMode(relayPin,OUTPUT);
     WiFi.begin(ssid, password);
 
   while (WiFi.status() != WL_CONNECTED) {
@@ -59,9 +66,9 @@ void loop() {
       DynamicJsonDocument doc(ESP.getMaxAllocHeap());
       deserializeJson(doc, JSON_Data);
       sensor_analog = analogRead(sensor_pin);
- //  moisture = ( 100 - ( (sensor_analog/4095.00) * 100 ) );
-     //Serial.print("Moisture = ");
-     //Serial.print(sensor_analog);  /* Print Temperature on the serial window */
+      int moisture = ( 100 - ( (sensor_analog/4095.00) * 100 ) );
+     // Serial.print("Moisture = ");
+      //Serial.println(sensor_analog);  /* Print Temperature on the serial window */
      //Serial.println("");
      float hum = dht.readHumidity();
      float tem = dht.readTemperature();
@@ -92,12 +99,47 @@ void loop() {
   if (isnan(hum) || isnan(tem)) {
     Serial.println("Failed to read from DHT sensor!");
   } else {
-    outputdata = String(timestamp)+","+String(tem)+","+String(hum)+","+String(weather_description)+","+String(rain)+","+String(rain_predict);
+    outputdata = String(timestamp)+","+String(tem)+","+String(hum)+","+String(weather_description)+","+String(rain)+","+String(rain_predict)+","+String(moisture);
 //    Serial.print("Humidity: ");
     Serial.println(outputdata);
+     // Implement your decision-making logic
+  if (rainpredict > 0.5) {
+    if (rainfall < water_threshold) {
+      wait =(( water_threshold - rainfall)*10/1000)/8*3600000
+      if (moisture < soilmoisture_threshold) {
+        // You can add the BME280 sensor reading here if you're using it
+        // float temperature = bme.readTemperature();
+        // float humidity = bme.readHumidity();
+
+        if ( temperature > temperature_Threshold && humidity < humidity_Threshold ) {
+          // Implement irrigation control logic here
+            digitalWrite(relayPin,HIGH);
+            delay(wait);
+  // put your main code here, to run repeatedly:
+            digitalWrite(relayPin,LOW);
+             delay(10000);
+  
+          Serial.println("Initiating irrigation...");
+        } else {
+          Serial.println("No irrigation needed.");
+        }
+      } else {
+        Serial.println("No irrigation needed.");
+      }
+    } else {
+      Serial.println("Rainfall detected. No irrigation needed.");
+    }
+  }
+
+  // Add a delay if needed to prevent rapid decision-making and printing
+  delay(1000);  // Wait for 1 second before making another decision
+}}
 // 
 //    Serial.print(tem);
 //    Serial.println("°C");
+
+
+
 
 
 
@@ -115,7 +157,7 @@ void loop() {
 
     http.end();
 
-  }
+  
   
   //Wait for 30 seconds
   delay(30000);
